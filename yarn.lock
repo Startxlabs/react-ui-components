@@ -1711,6 +1711,11 @@
     "@types/qs" "*"
     "@types/serve-static" "*"
 
+"@types/google.maps@*":
+  version "3.47.3"
+  resolved "https://registry.yarnpkg.com/@types/google.maps/-/google.maps-3.47.3.tgz#36ec9cfb421ef8db11ba7337e006143dbd374522"
+  integrity sha512-BF/BzpO0LWiwR/bBoGVriy7e2n+syuGNQMQ0r/+GtisUcgKn9P7Z4rmLNmZko9niE8JJ5dpMkxHeen7gADlNaw==
+
 "@types/graceful-fs@^4.1.2":
   version "4.1.5"
   resolved "https://registry.yarnpkg.com/@types/graceful-fs/-/graceful-fs-4.1.5.tgz#21ffba0d98da4350db64891f92a9e5db3cdb4e15"
@@ -1817,6 +1822,14 @@
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-17.0.11.tgz#e1eadc3c5e86bdb5f7684e00274ae228e7bcc466"
   integrity sha512-f96K3k+24RaLGVu/Y2Ng3e1EbZ8/cVJvypZWd7cy0ofCBaf2lcM46xNhycMZ2xGwbBjRql7hOlZ+e2WlJ5MH3Q==
   dependencies:
+    "@types/react" "*"
+
+"@types/react-places-autocomplete@^7.2.9":
+  version "7.2.9"
+  resolved "https://registry.yarnpkg.com/@types/react-places-autocomplete/-/react-places-autocomplete-7.2.9.tgz#5d1579f5b91b48a3bc56bc0b385b01aa516c8af4"
+  integrity sha512-N5892g3ocleoHsks7G5T9xdJ2kfRblg7yUKJQZ7nFKETIoAr/Gz/ZyogEbrkB1sEvWEJmn5FEYlMM++rZmQf8w==
+  dependencies:
+    "@types/google.maps" "*"
     "@types/react" "*"
 
 "@types/react@*", "@types/react@^17.0.20":
@@ -6862,7 +6875,7 @@ prompts@^2.0.1, prompts@^2.4.2:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.7.2:
+prop-types@^15.5.8, prop-types@^15.7.2:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -7003,6 +7016,14 @@ react-is@^17.0.1:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
+
+react-places-autocomplete@^7.3.0:
+  version "7.3.0"
+  resolved "https://registry.yarnpkg.com/react-places-autocomplete/-/react-places-autocomplete-7.3.0.tgz#81a2345ae4a6fc35d7a712ccd4850d497553ba1b"
+  integrity sha512-86wcHC69JATvWBnIS/yCsBHLtwzOGcnx3Ye94u74yTrz1jLRC/txkVDkf6rvC+Jq3zNe/tAg/W53x0EaH1ZPPw==
+  dependencies:
+    lodash.debounce "^4.0.8"
+    prop-types "^15.5.8"
 
 react-refresh@^0.11.0:
   version "0.11.0"
