@@ -9,7 +9,7 @@ import {
   useStripe,
 } from "@stripe/react-stripe-js";
 
-const stripePromise = loadStripe("publishableKey");
+const stripePromise = loadStripe("PublishableKey");
 
 type CardInputValidation = {
   valid: boolean;
@@ -35,7 +35,11 @@ const StripeForm: React.FC<CheckoutForm> = ({ style, ...props }) => {
   const stripe = useStripe();
   const elements = useElements();
 
-  const [showErrors, setShowErrors] = useState(false);
+  const [showErrors, setShowErrors] = useState({
+    cardNumber: false,
+    expiry: false,
+    cvc: false,
+  });
 
   const cardNumValidation = useRef<CardInputValidation>(initialValidationValues(errorMessages.cardRequired));
   const cardExpValidation = useRef<CardInputValidation>(initialValidationValues(errorMessages.expRequired));
@@ -66,7 +70,11 @@ const StripeForm: React.FC<CheckoutForm> = ({ style, ...props }) => {
           props.handleSuccess(result);
         }
       } else {
-        setShowErrors(true);
+        setShowErrors({
+          cardNumber: true,
+          cvc: true,
+          expiry: true,
+        });
       }
     } catch (error) {
       console.log({ error });
@@ -88,6 +96,8 @@ const StripeForm: React.FC<CheckoutForm> = ({ style, ...props }) => {
       valid: isValid,
       message,
     };
+
+    setShowErrors((prev) => ({ ...prev, cardNumber: false }));
   };
 
   const cardExpiryHandler = (event) => {
@@ -104,6 +114,7 @@ const StripeForm: React.FC<CheckoutForm> = ({ style, ...props }) => {
       valid: isValid,
       message,
     };
+    setShowErrors((prev) => ({ ...prev, expiry: false }));
   };
 
   const cardCvcHandler = (event) => {
@@ -120,6 +131,7 @@ const StripeForm: React.FC<CheckoutForm> = ({ style, ...props }) => {
       valid: isValid,
       message,
     };
+    setShowErrors((prev) => ({ ...prev, cvc: false }));
   };
 
   useEffect(() => {
@@ -146,7 +158,7 @@ const StripeForm: React.FC<CheckoutForm> = ({ style, ...props }) => {
             placeholder: "",
           }}
         />
-        {showErrors && !cardNumValidation.current.valid && <p>{cardNumValidation.current.message}</p>}
+        {showErrors.cardNumber && !cardNumValidation.current.valid && <p>{cardNumValidation.current.message}</p>}
       </div>
       <div>
         <label>Expiry Date</label>
@@ -156,7 +168,7 @@ const StripeForm: React.FC<CheckoutForm> = ({ style, ...props }) => {
             placeholder: "",
           }}
         />
-        {showErrors && !cardExpValidation.current.valid && <p>{cardExpValidation.current.message}</p>}
+        {showErrors.expiry && !cardExpValidation.current.valid && <p>{cardExpValidation.current.message}</p>}
       </div>
       <div>
         <label>CVV</label>
@@ -166,7 +178,7 @@ const StripeForm: React.FC<CheckoutForm> = ({ style, ...props }) => {
             placeholder: "",
           }}
         />
-        {showErrors && !cardCvcValidation.current.valid && <p>{cardCvcValidation.current.message}</p>}
+        {showErrors.cvc && !cardCvcValidation.current.valid && <p>{cardCvcValidation.current.message}</p>}
       </div>
       <button type="submit" disabled={!stripe || !elements}>
         Add Card
