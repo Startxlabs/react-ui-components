@@ -114,36 +114,39 @@ or yarn,
 #### Example
 
 ```
-    const simulateFetch = async () => {
-        return "seti_";
-    };
+import { StripeForm } from "./components/StripeForm";
 
-  <StripeForm
-          fetchSetupIntent={simulateFetch}
-          handleException={(message) => console.error(message)}
-          handleSuccess={(response) => {
-            console.log({ response });
-          }}
-          style={{
-            base: {
-              fontSize: "0.88rem",
-              padding: "13px 22px",
-              color: "#1b3e87",
-              letterSpacing: "0.025em",
-              fontWeight: 400,
-              lineHeight: "45px",
-              backgroundColor: "#f5f5f5",
+...
+const simulateFetch = async () => {
+    return "seti_";
+};
 
-              "::placeholder": {
-                color: "#1b3e87",
-                fontFamily: "'Montserrat', sans-serif",
-                fontWeight: 400,
-                fontSize: "0.88rem",
-              },
-            },
-            invalid: {
-              color: "#F53997",
-            },
-          }}
-        />
+<StripeForm
+    fetchSetupIntent={simulateFetch}
+    handleException={(message) => console.error(message)}
+    handleSuccess={(response) => {
+    console.log({ response });
+    }}
+    style={{
+    base: {
+        fontSize: "0.88rem",
+        padding: "13px 22px",
+        color: "#1b3e87",
+        letterSpacing: "0.025em",
+        fontWeight: 400,
+        lineHeight: "45px",
+        backgroundColor: "#f5f5f5",
+
+        "::placeholder": {
+        color: "#1b3e87",
+        fontFamily: "'Montserrat', sans-serif",
+        fontWeight: 400,
+        fontSize: "0.88rem",
+        },
+    },
+    invalid: {
+        color: "#F53997",
+    },
+    }}
+/>
 ```
