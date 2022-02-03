@@ -1,4 +1,4 @@
-import React, { HTMLInputTypeAttribute, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import PlacesAutocomplete, { getLatLng, geocodeByPlaceId } from "react-places-autocomplete";
 
 export type LocationInfo = {
